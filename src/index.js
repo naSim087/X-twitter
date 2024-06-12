@@ -10,7 +10,7 @@ app.listen(3000,async ()=>{
   await connect();
   console.log("mongodb connected");
   const tweetRepo= new tweetRepository();
-  // const tweet=await tweetRepo.create({content:'my tweet'});
+  const tweet=await tweetRepo.create({content:'my tweet'});
   // tweet.comments.push({content:'first comment'});
   // await tweet.save();
 
@@ -20,7 +20,7 @@ app.listen(3000,async ()=>{
   // const comment= await Comment.create({content:'new comment'});
   // tweet.comments.push(comment);
   // await tweet.save();
-  const tweet= await tweetRepo.getWithComment('6667f581660ddc42925f4aa5')
+  // const tweet= await tweetRepo.getWithComment('6667f581660ddc42925f4aa5')
   console.log(tweet);
   // const tweet=await Tweet.create({
   //   content:'ds tweet',

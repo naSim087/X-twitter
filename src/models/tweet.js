@@ -3,19 +3,14 @@ const tweetSchema=new mongoose.Schema({
   content:{
     type:String,
     required:true,
-  }
-  , userEmail:{
-    type:String
   },
-  comments:[{
-   type:mongoose.Schema.Types.ObjectId,
-   ref:'Comment'
-  }]
-
-  
+  hashtags:[
+    {
+      type:mongoose.Schema.ObjectId,
+      ref:'Hashtag'
+    }
+  ]
 },{timestamps:true})
-tweetSchema.virtual('contentWithEmail').get(function process(){
-return `${this.content} \n Created by: ${this.userEmail}`;
-})
+
 const Tweet=mongoose.model('Tweet',tweetSchema);
 module.exports=Tweet
