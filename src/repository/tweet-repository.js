@@ -1,6 +1,6 @@
 const Tweet =require('../models/tweet');
 
-class tweetRepository{
+class TweetRepository{
 
 async create(data){
   try {
@@ -11,17 +11,7 @@ async create(data){
     throw error;
   }
 }
-async updata(id,data){
-  try {
-    const tweet=await Tweet.findByIdAndUpdate(id,data,{new:true});
-    // this new: true will property will return the updated doecument
-    // if you don't use it then we will get the old document but the document will get updated
-    return tweet;
-  } catch (error) {
-    console.log(`something went wrong at the repolayer`);
-    throw error;
-  }
-}
+
 async get(id){
   try {
     const tweet=await Tweet.findById(id);
@@ -67,4 +57,4 @@ async getAll(offset,limit){
 
 
 };
-module.exports=tweetRepository;
+module.exports=TweetRepository;

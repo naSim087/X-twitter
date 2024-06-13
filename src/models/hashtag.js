@@ -12,6 +12,6 @@ const hashtagSchema= new mongoose.Schema({
       ref:'Tweet'
     }
   ]
-})
-const hashtag=mongoose.model('Hashtag',hashtagSchema);
-module.exports=hashtag
+},{timestamps:true});
+const Hashtag=mongoose.model('Hashtag',hashtagSchema);
+module.exports=Hashtag
