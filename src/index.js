@@ -12,7 +12,7 @@ app.listen(3000,async ()=>{
   await connect();
   console.log("mongodb connected");
   let tweet=new tweetService();
-  const response =await tweet.create({content:'this is #after #processing , really #excited, helleo'})
+  const response =await tweet.create({content:'#RRRETURNS #EXCITED #AFTER'})
   
 }
 
