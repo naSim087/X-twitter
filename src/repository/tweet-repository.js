@@ -1,26 +1,12 @@
 const Tweet =require('../models/tweet');
+const crudRepository= require('./crud-repository')
+class TweetRepository extends crudRepository{
 
-class TweetRepository{
-
-async create(data){
-  try {
-    const tweet =await  Tweet.create(data);
-    return tweet;
-  } catch (error) {
-    console.log(`something went wrong at the repolayer`);
-    throw error;
+  constructor(){
+    super(Tweet);
   }
-}
 
-async get(id){
-  try {
-    const tweet=await Tweet.findById(id);
-    return tweet;
-  } catch (error) {
-    console.log(`something went wrong at the repolayer`);
-    throw error;
-  }
-}
+
 async getWithComment(id){
   try {
     const tweet=await Tweet.findById(id).populate({path:'comments'});
@@ -33,15 +19,7 @@ async getWithComment(id){
     throw error;
   }
 }
-async destroy(id){
-  try {
-    const tweet= await Tweet.findByIdAndRemove(id);
-    return tweet;
-  } catch (error) {
-    console.log(`something went wrong at the repolayer`);
-    throw error;
-  }
-}
+
 
 // writing the query to paginate the going response
 async getAll(offset,limit){
@@ -52,8 +30,6 @@ async getAll(offset,limit){
     throw error;
   }
 }
-
-
 
 
 };
