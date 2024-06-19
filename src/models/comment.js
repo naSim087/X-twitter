@@ -4,9 +4,21 @@ const commentSchema=new mongoose.Schema({
     type:String,
     required:true,
   }
-  , userEmail:{
-    type:String
+  , userId:{
+    type:mongoose.Schema.ObjectId,
+    ref:'User',
+    require:true
   },
+  onModel:{
+    type:String,
+    required:true,
+    enum:['Tweet','Comment']
+  },
+  commentable:{
+      type:mongoose.Schema.Types.ObjectId,
+      required:true,
+      refPath:'onModel',
+  }
   
 
   

@@ -18,20 +18,20 @@ app.use('/api',newrouter);
 app.listen(3000,async ()=>{ 
   console.log("server started ")
   await connect();
-  console.log("mongodb connected");
-   const userRepo= new UserRepository();
- const tweetRepo= new TweetRepository();
-  const tweets=await tweetRepo.getAll(0,10);
-  // console.log(tweets);
-//  const user = await userRepo.create({
-//     email:'nqqq1q@gmail.com',
-//     password:'qer12',
-//     name:'nqqqqqa'
-//   })
-  const users=await userRepo.getAll();
+   console.log("mongodb connected");
+//    const userRepo= new UserRepository();
+//  const tweetRepo= new TweetRepository();
+//   const tweets=await tweetRepo.getAll(0,10);
+//   // console.log(tweets);
+// //  const user = await userRepo.create({
+// //     email:'nqqq1q@gmail.com',
+// //     password:'qer12',
+// //     name:'nqqqqqa'
+// //   })
+//   const users=await userRepo.getAll();
   
-  const likeservice = new LikeService();
-  await likeservice.toglelike(tweets[0].id,'Tweet',users[0].id);
+//   const likeservice = new LikeService();
+//   await likeservice.toglelike(tweets[0].id,'Tweet',users[0].id);
   
   // let tweet=new tweetService();
   // const response =await tweet.create({content:'#RRRETURNS #EXCITED #AFTER'})
