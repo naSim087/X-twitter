@@ -52,7 +52,10 @@ class tweetService{
     return tweet;
   }
 
-
+  async get(id){
+    const tweet = await this.tweetRepository.getWithComment(id);
+    return tweet;
+  }
 
 
 

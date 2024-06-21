@@ -9,7 +9,9 @@ class TweetRepository extends crudRepository{
 
 async getWithComment(id){
   try {
-    const tweet=await Tweet.findById(id).populate('comments');
+    const tweet=await Tweet.findById(id).populate({path:'comments',populate:{
+      path:'comments',
+    }});
     // Tweet.findById(id).populate({path:'comments'}).lean can be used when we don't want the 
     // object to me moongose using the lean we will get the javascript object
     
