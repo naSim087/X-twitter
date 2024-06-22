@@ -1,15 +1,29 @@
 const tweetService= require('../sevices/tweet-service')
 const tweetservice=new tweetService();
+const {upload}= require('../config/file-upload-s3-config')
+const singleUploader=upload.single('image')
 const create=async( req,res)=>{
   try {
-    console.log(req.body);
-    const response=await tweetservice.create(req.body);
-    return res.status(200).json({
-      success:true,
-      message:"successfully created the tweet",
-      data: response,
-      err:{}
+    singleUploader(req,res,async function(err,data){
+      if(err){
+        return res.status(500).json({
+          error:err,
+        })
+      }
+      console.log(`image url is ${req.file}`);
+      const payload= req.body;
+      payload.image=req.file.location;
+      const response=await tweetservice.create(payload);
+
+      return res.status(200).json({
+        success:true,
+        message:"successfully created the tweet",
+        data: response,
+        err:{}
+      })
     })
+    
+   
   } catch (error) {
     return res.status(500).json({
       success:false,
