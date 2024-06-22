@@ -7,7 +7,7 @@ class tweetService{
   async create(data){
    
     const content=data.content;
-    // console.log(content);
+     console.log(content);
     let tags= content.match(/#[a-zA-Z0-9_]+/g);
     
    tags= tags.map((ele)=>{
